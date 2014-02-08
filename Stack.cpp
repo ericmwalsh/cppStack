@@ -59,12 +59,12 @@ bool ArrayStack::isFull(){ //Big-O is O(1)
     return place==arrSize;
 }
 
-void ArrayStack::push(string s){
+void ArrayStack::push(string s){  //O(1)
     if(isFull()) throw ContainerOverflow("Unable to execute push(string s) : ArrayStack is full!");
     else buf[place++]=s;
 }
 
-string ArrayStack::pop(){
+string ArrayStack::pop(){ //O(1)
     if(isEmpty()) throw ContainerUnderflow("Unable to execute pop() : ArrayStack is empty!");
     else{
         string ans;
@@ -73,12 +73,12 @@ string ArrayStack::pop(){
     }
 }
 
-string ArrayStack::top(){
+string ArrayStack::top(){ //O(1)
     if(isEmpty()) throw ContainerUnderflow("Unable to execute top() : ArrayStack is empty!");
     else return buf[place-1];
 }
 
-void ArrayStack::print(){
+void ArrayStack::print(){ //O(N)
     for(int i = 0; i<place; i++) cout << "Entry " << i << " : " << buf[i] << endl;
 }
 
@@ -102,16 +102,16 @@ bool LinkedStack::isEmpty(){
     return head==NULL;
 }
 
-void LinkedStack::push(string s){
+void LinkedStack::push(string s){ //O(1)
     head = new ListNode(s, head);
 }
 
-string LinkedStack::top(){
+string LinkedStack::top(){ //O(1)
     if(isEmpty()) throw ContainerUnderflow("Unable to execute top() : LinkedStack is empty!");
     else cout << head->info << endl;
 }
 
-string LinkedStack::pop(){
+string LinkedStack::pop(){ //O(1)
     if(isEmpty()) throw ContainerUnderflow("Unable to execute pop() : LinkedStack is empty!");
     else{
         ListNode * temp = head;
@@ -121,7 +121,7 @@ string LinkedStack::pop(){
     }
 }
 
-void LinkedStack::print(){
+void LinkedStack::print(){ //O(N)
     cout << "PRINTING STACK FROM TOP DOWN..." << endl;
     for(ListNode * i = head; i; i=i->next) cout << i->info << endl;
 }
