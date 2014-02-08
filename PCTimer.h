@@ -1,10 +1,12 @@
 #include <time.h> 
-#include "Stack.h"
+#include "Queue.h"
 
 
 void fillAll(char * fileName, Stack * inp);
 void emptyAll(char * fileName, Stack * inp);
 bool isBalanced(string s);
+void fillAll(char * fileName, Queue * inp);
+void emptyAll(char * fileName, Queue * inp);
 
 class PCTimer
 {

@@ -49,46 +49,22 @@ bool isBalanced(string s) // Big-O is O(n)
     }
     return a->isEmpty();
 }
+void fillAll(char * fileName, Queue * inp){
+    PCTimer t;
+    t.start();
+    std::ifstream infile(fileName);
+    for( std::string line; getline( infile, line ); ) inp->enqueue(line);
+    infile.close();
+    t.stop();
+    cout << "Stack: Time to fillAll from " << fileName << ": " << t.elapsedTime() << " secs" << endl;
+}
 
-/**
-void insertAllWords(char * fileName, SortedLinkedList * inp){
+void emptyAll(char * fileName, Queue * inp){
     PCTimer t;
     t.start();
-    std::ifstream infile(fileName);
-    for( std::string line; getline( infile, line ); ){
-        //this line converts all words into lowercase for easier conversion using the '>' symbol
-        std::transform(line.begin(), line.end(), line.begin(), ::tolower);
-        inp->insert(line);
-    }
-    infile.close();
+    std:ofstream outfile(fileName);
+    while(!inp->isEmpty()) outfile << inp->dequeue() << endl;
+    outfile.close();
     t.stop();
-    cout << "SortedLinkedList: Time to insertAllWords from " << fileName << ": " << t.elapsedTime() << " secs" << endl;
+    cout << "Stack: Time to emptyAll to " << fileName << ": " << t.elapsedTime() << " secs" << endl;
 }
-bool findAllWords(char * fileName, SortedLinkedList * inp){
-    PCTimer t;
-    t.start();
-    std::ifstream infile(fileName);
-    for( std::string line; getline( infile, line ); ){
-        //this line converts all words into lowercase for easier conversion using the '>' symbol
-        std::transform(line.begin(), line.end(), line.begin(), ::tolower);
-        if(!inp->find(line)) return false;
-    }
-    infile.close();
-    t.stop();
-    cout << "SortedLinkedList: Time to findAllWords from " << fileName << ": " << t.elapsedTime() << " secs" << endl;
-    return true;
-}
-void removeAllWords(char * fileName, SortedLinkedList * inp){
-    PCTimer t;
-    t.start();
-    std::ifstream infile(fileName);
-    for( std::string line; getline( infile, line ); ){
-        //this line converts all words into lowercase for easier conversion using the '>' symbol
-        std::transform(line.begin(), line.end(), line.begin(), ::tolower);
-        inp->remove(line);
-    }
-    infile.close();
-    t.stop();
-    cout << "SortedLinkedList: Time to removeAllWords from " << fileName << ": " << t.elapsedTime() << " secs" << endl;
-}
-**/

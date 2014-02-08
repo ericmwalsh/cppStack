@@ -1,2 +1,2 @@
-testmake: Stack.cpp fileListFunctions.cpp testSortedList.cpp
-	g++ Stack.cpp fileListFunctions.cpp testSortedList.cpp -o testmake -I.
+testmake: Stack.cpp Queue.cpp fileListFunctions.cpp testStackAndQueue.cpp
+	g++ Stack.cpp Queue.cpp fileListFunctions.cpp testStackAndQueue.cpp -o testmake -I.
