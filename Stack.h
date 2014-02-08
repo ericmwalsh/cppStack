@@ -11,6 +11,27 @@
 #include <fstream>
 using namespace std;
 
+#ifndef ____ContainerUnderflow__
+#define ____ContainerUnderflow__
+class ContainerUnderflow{
+
+public:
+    string msg="";
+    ContainerUnderflow(string inp);
+};
+#endif ____ContainerUnderflow__
+
+#ifndef ____ContainerOverflow__
+#define ____ContainerOverflow__
+class ContainerOverflow{
+
+public:
+    string msg="";
+    ContainerOverflow(string inp);
+};
+#endif ____ContainerOverrflow__
+
+
 
 #ifndef ____ListNode__
 #define ____ListNode__

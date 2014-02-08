@@ -26,26 +26,31 @@ bool ArrayQueue::isEmpty(){ //Big-O is O(1)
 }
 
 bool ArrayQueue::isFull(){ //Big-O is O(1)
-    return (back+1)%size==begin;
+    return counter==size && (back)%size==begin;
 }
 
 void ArrayQueue::enqueue(string s){
-    if(!isFull()){
+    if(isFull()) throw ContainerOverflow("Unable to execute enqueue(string s) : ArrayQueue is full!");
+    else{
         buf[back]=s;
         back=(back+1)%size;
+        counter++;
     }
 }
 
 string ArrayQueue::dequeue(){
-    if(!isEmpty()){
+    if(isEmpty()) throw ContainerUnderflow("Unable to execute dequeue() : ArrayQueue is empty!");
+    else{
         string ans = buf[begin];
         begin=(begin+1)%size;
+        counter--;
         return ans;
     }
 }
 
 string ArrayQueue::front(){
-    if(!isEmpty()) return buf[begin];
+    if(isEmpty()) throw ContainerUnderflow("Unable to execute front() : ArrayQueue is empty!");
+    else return buf[begin];
 }
 
 void ArrayQueue::print(){
@@ -88,11 +93,13 @@ void LinkedQueue::enqueue(string s){
 }
 
 string LinkedQueue::front(){
-    if(!isEmpty()) cout << head->info << endl;
+    if(isEmpty()) throw ContainerUnderflow("Unable to execute front() : LinkedQueue is empty!");
+    else cout << head->info << endl;
 }
 
 string LinkedQueue::dequeue(){
-    if(!isEmpty()){
+    if(isEmpty()) throw ContainerUnderflow("Unable to execute dequeue() : LinkedQueue is empty!");
+    else{
         if(tail==NULL){
             ListNode * temp = head;
             head = NULL;

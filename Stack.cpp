@@ -8,6 +8,12 @@
 
 #include "Stack.h"
 
+ContainerUnderflow::ContainerUnderflow(string s){
+    msg = s;
+}
+ContainerOverflow::ContainerOverflow(string s){
+    msg = s;
+}
 //ListNode for LinkedStack class
 ListNode::ListNode(){
     info = "";
@@ -54,11 +60,13 @@ bool ArrayStack::isFull(){ //Big-O is O(1)
 }
 
 void ArrayStack::push(string s){
-    if(!isFull()) buf[place++]=s;
+    if(isFull()) throw ContainerOverflow("Unable to execute push(string s) : ArrayStack is full!");
+    else buf[place++]=s;
 }
 
 string ArrayStack::pop(){
-    if(!isEmpty()){
+    if(isEmpty()) throw ContainerUnderflow("Unable to execute pop() : ArrayStack is empty!");
+    else{
         string ans;
         ans = buf[--place];
         return ans;
@@ -66,7 +74,8 @@ string ArrayStack::pop(){
 }
 
 string ArrayStack::top(){
-    if(!isEmpty()) return buf[place-1];
+    if(isEmpty()) throw ContainerUnderflow("Unable to execute top() : ArrayStack is empty!");
+    else return buf[place-1];
 }
 
 void ArrayStack::print(){
@@ -98,11 +107,13 @@ void LinkedStack::push(string s){
 }
 
 string LinkedStack::top(){
-    cout << head->info << endl;
+    if(isEmpty()) throw ContainerUnderflow("Unable to execute top() : LinkedStack is empty!");
+    else cout << head->info << endl;
 }
 
 string LinkedStack::pop(){
-    if(!isEmpty()){
+    if(isEmpty()) throw ContainerUnderflow("Unable to execute pop() : LinkedStack is empty!");
+    else{
         ListNode * temp = head;
         head = head->next;
         temp->next = NULL;

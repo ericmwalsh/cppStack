@@ -76,7 +76,104 @@ void testLinkedQueueFinal(){
     fillAll("random.txt", a);
     emptyAll("LinkedQueueOutput.txt", a);
 }
-void runAll(){
+void testArrayStackExceptions(){
+    ArrayStack * a = new ArrayStack(2);
+    try{
+        cout << "Attempting to pop from an empty ArrayStack..." << endl;
+        a->pop();
+    }
+    catch(ContainerUnderflow & c){
+        cout << "ContainerUnderflow Exception: " << c.msg << endl;
+
+    }
+    try{
+        cout << "Attempting to top from an empty ArrayStack..." << endl;
+        a->top();
+    }
+    catch(ContainerUnderflow & c){
+        cout << "ContainerUnderflow Exception: " << c.msg << endl;
+
+    }
+    a->push("a");
+    a->push("b");
+    try{
+        cout << "Attempting to push to a full ArrayStack..." << endl;
+        a->push("c");
+    }
+    catch(ContainerOverflow & c){
+        cout << "ContainerOverflow Exception: " << c.msg << endl;
+
+    }
+}
+void testLinkedStackExceptions(){
+    LinkedStack * a = new LinkedStack();
+    try{
+        cout << "Attempting to pop from an empty LinkedStack..." << endl;
+        a->pop();
+    }
+    catch(ContainerUnderflow & c){
+        cout << "ContainerUnderflow Exception: " << c.msg << endl;
+
+    }
+    try{
+        cout << "Attempting to top from an empty Linkedtack..." << endl;
+        a->top();
+    }
+    catch(ContainerUnderflow & c){
+        cout << "ContainerUnderflow Exception: " << c.msg << endl;
+
+    }
+}
+void testArrayQueueExceptions(){
+    ArrayQueue * a = new ArrayQueue(2);
+    try{
+        cout << "Attempting to dequeue from an empty ArrayQueue..." << endl;
+        a->dequeue();
+    }
+    catch(ContainerUnderflow & c){
+        cout << "ContainerUnderflow Exception: " << c.msg << endl;
+
+    }
+    try{
+        cout << "Attempting to front from an empty ArrayQueue..." << endl;
+        a->front();
+    }
+    catch(ContainerUnderflow & c){
+        cout << "ContainerUnderflow Exception: " << c.msg << endl;
+
+    }
+    a->enqueue("a");
+    a->enqueue("b");
+    try{
+        cout << "Attempting to enqueue to a full ArrayQueue..." << endl;
+        //cout << a.counter << " and " << a.back << endl;
+        a->enqueue("c");
+    }
+    catch(ContainerOverflow & c){
+        cout << "ContainerOverflow Exception: " << c.msg << endl;
+
+    }
+}
+void testLinkedQueueExceptions(){
+    LinkedQueue * a = new LinkedQueue();
+    try{
+        cout << "Attempting to dequeue from an empty LinkedQueue..." << endl;
+        a->dequeue();
+    }
+    catch(ContainerUnderflow & c){
+        cout << "ContainerUnderflow Exception: " << c.msg << endl;
+
+    }
+    try{
+        cout << "Attempting to front from an empty LinkedQueue..." << endl;
+        a->front();
+    }
+    catch(ContainerUnderflow & c){
+        cout << "ContainerUnderflow Exception: " << c.msg << endl;
+
+    }
+}
+void runAllStructures(){
     cout << "ArrayStack:" << endl << endl;
     testArrayStackFinal();
     cout << endl << "LinkedStack:" << endl << endl;
@@ -88,7 +185,18 @@ void runAll(){
     cout << endl << "isBalanced() using LinkedStack:" << endl << endl;
     testIsBalanced();
 }
+void testAllErrors(){
+    cout << endl << endl << "ArrayStack errors:" << endl << endl;
+    testArrayStackExceptions();
+    cout << endl << "LinkedStack errors:" << endl << endl;
+    testLinkedStackExceptions();
+    cout << endl << "ArrayQueue errors:" << endl << endl;
+    testArrayQueueExceptions();
+    cout << endl << "LinkedQueue errors:" << endl << endl;
+    testLinkedQueueExceptions();
+}
 int main(int argc, const char * argv[]){
-    runAll();
+    runAllStructures();
+    testAllErrors();
     return 0;
 }

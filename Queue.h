@@ -40,7 +40,7 @@ public:
 class ArrayQueue : public Queue
 {
 private:
-    int size=45500, begin=0, back=0; //data member to make top and pop O(1)
+    int size=45500, begin=0, back=0, counter=0; //data member to make top and pop O(1)
     string * buf;
 public:
     ArrayQueue();

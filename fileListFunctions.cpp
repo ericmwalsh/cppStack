@@ -8,7 +8,7 @@
 
 #include "PCTimer.h"
 
-void fillAll(char * fileName, Stack * inp){
+void fillAll(char * fileName, Stack * inp){ // Big-O is O(n)
     PCTimer t;
     t.start();
     std::ifstream infile(fileName);
@@ -18,7 +18,7 @@ void fillAll(char * fileName, Stack * inp){
     cout << "Stack: Time to fillAll from " << fileName << ": " << t.elapsedTime() << " secs" << endl;
 }
 
-void emptyAll(char * fileName, Stack * inp){
+void emptyAll(char * fileName, Stack * inp){ // Big-O is O(n)
     PCTimer t;
     t.start();
     std:ofstream outfile(fileName);
@@ -27,7 +27,7 @@ void emptyAll(char * fileName, Stack * inp){
     t.stop();
     cout << "Stack: Time to emptyAll to " << fileName << ": " << t.elapsedTime() << " secs" << endl;
 }
-bool isBalanced(string s) // Big-O is O(n)
+bool isBalanced(string s) 
 {
     LinkedStack * a = new LinkedStack();
     for(int i=0; i<s.length(); i++)
@@ -49,7 +49,7 @@ bool isBalanced(string s) // Big-O is O(n)
     }
     return a->isEmpty();
 }
-void fillAll(char * fileName, Queue * inp){
+void fillAll(char * fileName, Queue * inp){ // Big-O is O(n)
     PCTimer t;
     t.start();
     std::ifstream infile(fileName);
@@ -59,7 +59,7 @@ void fillAll(char * fileName, Queue * inp){
     cout << "Stack: Time to fillAll from " << fileName << ": " << t.elapsedTime() << " secs" << endl;
 }
 
-void emptyAll(char * fileName, Queue * inp){
+void emptyAll(char * fileName, Queue * inp){ // Big-O is O(n)
     PCTimer t;
     t.start();
     std:ofstream outfile(fileName);
